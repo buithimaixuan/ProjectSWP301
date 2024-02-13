@@ -6,12 +6,11 @@ package Models;
 
 import java.sql.Date;
 
-
 /**
  *
  * @author PC
  */
-public class Order {
+public class orders {
     private int o_id;
     private int cus_id;
     private String image_payment;
@@ -21,10 +20,10 @@ public class Order {
     private long total_price;
     private int isDelete;
 
-    public Order() {
+    public orders() {
     }
 
-    public Order(int o_id, int cus_id, String image_payment, String address, String status, Date o_date, long total_price, int isDelete) {
+    public orders(int o_id, int cus_id, String image_payment, String address, String status, Date o_date, long total_price, int isDelete) {
         this.o_id = o_id;
         this.cus_id = cus_id;
         this.image_payment = image_payment;
@@ -98,5 +97,4 @@ public class Order {
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
     }
-    
 }

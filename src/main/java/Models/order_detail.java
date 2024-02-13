@@ -8,15 +8,15 @@ package Models;
  *
  * @author PC
  */
-public class OrderDetail {
+public class order_detail {
     private int o_id;
     private int pro_id;
     private int quantity;
 
-    public OrderDetail() {
+    public order_detail() {
     }
 
-    public OrderDetail(int o_id, int pro_id, int quantity) {
+    public order_detail(int o_id, int pro_id, int quantity) {
         this.o_id = o_id;
         this.pro_id = pro_id;
         this.quantity = quantity;

@@ -10,20 +10,20 @@ import java.sql.Date;
  *
  * @author PC
  */
-public class OrderStatus {
+public class order_status_history {
     private int o_id;
     private int staff_id;
     private String status;
-    private Date createODate;
+    private Date create_date;
 
-    public OrderStatus() {
+    public order_status_history() {
     }
 
-    public OrderStatus(int o_id, int staff_id, String status, Date createODate) {
+    public order_status_history(int o_id, int staff_id, String status, Date create_date) {
         this.o_id = o_id;
         this.staff_id = staff_id;
         this.status = status;
-        this.createODate = createODate;
+        this.create_date = create_date;
     }
 
     public int getO_id() {
@@ -38,8 +38,8 @@ public class OrderStatus {
         return status;
     }
 
-    public Date getCreateODate() {
-        return createODate;
+    public Date getCreate_date() {
+        return create_date;
     }
 
     public void setO_id(int o_id) {
@@ -54,8 +54,8 @@ public class OrderStatus {
         this.status = status;
     }
 
-    public void setCreateODate(Date createODate) {
-        this.createODate = createODate;
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
     }
     
     
