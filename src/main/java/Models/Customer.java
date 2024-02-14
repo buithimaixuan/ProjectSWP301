@@ -16,7 +16,7 @@ public class Customer extends Account {
     public Customer() {
     }
 
-    public Customer(int cus_id, int acc_id, String username, String password, String fullname, String avatar,String phone_number, String email, int code_reset, int isDelete) {
+    public Customer(int cus_id,int acc_id, String avatar,  String username, String password, String fullname, String phone_number, String email, int code_reset, int isDelete) {
         super(acc_id, username, password, fullname, phone_number, email, code_reset, isDelete);
         this.cus_id = cus_id;
         this.avatar = avatar;
@@ -37,6 +37,10 @@ public class Customer extends Account {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+    
+    
+
+    
 
    
 }
