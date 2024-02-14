@@ -8,7 +8,7 @@ package Models;
  *
  * @author Vu MInh Uyen
  */
-public class cart {
+public class Cart {
 
     private int cart_id;
     private int cus_id;
@@ -16,10 +16,10 @@ public class cart {
     private int pro_quantity;
     private double cart_price;
 
-    public cart() {
+    public Cart() {
     }
 
-    public cart(int cart_id, int cus_id, int pro_id, int pro_quantity, double cart_price) {
+    public Cart(int cart_id, int cus_id, int pro_id, int pro_quantity, double cart_price) {
         this.cart_id = cart_id;
         this.cus_id = cus_id;
         this.pro_id = pro_id;

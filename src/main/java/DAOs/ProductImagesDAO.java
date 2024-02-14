@@ -15,7 +15,7 @@ import java.util.LinkedList;
  *
  * @author Vu MInh Uyen
  */
-public class product_imagesDAO {
+public class ProductImagesDAO {
 
     private Connection connection;
 

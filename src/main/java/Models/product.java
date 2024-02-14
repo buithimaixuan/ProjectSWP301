@@ -10,10 +10,11 @@ import java.util.Date;
  *
  * @author Vu MInh Uyen
  */
-public class product {
+public class Product {
     private int pro_id;
     private int cat_id;
     private String pro_name;
+    private String pro_image;
     private String origin;
     private String brand;
     private double mass;
@@ -26,13 +27,14 @@ public class product {
     private Date create_date;
     private int isDelete;
 
-    public product() {
+    public Product() {
     }
 
-    public product(int pro_id, int cat_id, String pro_name, String origin, String brand, double mass, String ingredient, int pro_quantity, double pro_price, double discount, String pro_description, Date create_date, int isDelete) {
+    public Product(int pro_id, int cat_id, String pro_name, String pro_image, String origin, String brand, double mass, String ingredient, int pro_quantity, double pro_price, double discount, String pro_description, Date create_date, int isDelete) {
         this.pro_id = pro_id;
         this.cat_id = cat_id;
         this.pro_name = pro_name;
+        this.pro_image = pro_image;
         this.origin = origin;
         this.brand = brand;
         this.mass = mass;
@@ -44,6 +46,7 @@ public class product {
         this.create_date = create_date;
         this.isDelete = isDelete;
     }
+
 
     public int getPro_id() {
         return pro_id;
@@ -67,6 +70,14 @@ public class product {
 
     public void setPro_name(String pro_name) {
         this.pro_name = pro_name;
+    }
+
+    public String getPro_image() {
+        return pro_image;
+    }
+
+    public void setPro_image(String pro_image) {
+        this.pro_image = pro_image;
     }
 
     public String getOrigin() {
