@@ -18,17 +18,17 @@ import java.util.logging.Logger;
  *
  * @author PC
  */
-public class order_status_historyDAO {
+public class OrderStatusHistoryDAO {
 
     Connection conn;
 
-    public order_status_historyDAO() {
+    public OrderStatusHistoryDAO() {
         try {
             conn = DBConnection.connect();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -43,7 +43,7 @@ public class order_status_historyDAO {
                 orderStatusList.add(ods);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return orderStatusList;
     }
@@ -58,7 +58,7 @@ public class order_status_historyDAO {
                 obj = new order_status_history(rs.getInt("o_id"), rs.getInt("staff_id"), rs.getString("status"), rs.getDate("create_date"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return obj;
     }
@@ -73,7 +73,7 @@ public class order_status_historyDAO {
             ps.setDate(4, obj.getCreate_date());
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
@@ -87,7 +87,7 @@ public class order_status_historyDAO {
             ps.setInt(3, o_id);
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
@@ -99,7 +99,7 @@ public class order_status_historyDAO {
             ps.setInt(1, o_id);
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(order_status_historyDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderStatusHistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
