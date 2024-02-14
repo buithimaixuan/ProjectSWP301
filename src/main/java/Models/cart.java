@@ -14,18 +14,20 @@ public class cart {
     private int cus_id;
     private int pro_id;
     private int pro_quantity;
-    private int cart_price;
+    private double cart_price;
 
     public cart() {
     }
 
-    public cart(int cart_id, int cus_id, int pro_id, int pro_quantity, int cart_price) {
+    public cart(int cart_id, int cus_id, int pro_id, int pro_quantity, double cart_price) {
         this.cart_id = cart_id;
         this.cus_id = cus_id;
         this.pro_id = pro_id;
         this.pro_quantity = pro_quantity;
         this.cart_price = cart_price;
     }
+
+ 
 
     public int getCart_id() {
         return cart_id;
@@ -59,12 +61,14 @@ public class cart {
         this.pro_quantity = pro_quantity;
     }
 
-    public int getCart_price() {
+    public double getCart_price() {
         return cart_price;
     }
 
-    public void setCart_price(int cart_price) {
+    public void setCart_price(double cart_price) {
         this.cart_price = cart_price;
     }
+
+
 
 }

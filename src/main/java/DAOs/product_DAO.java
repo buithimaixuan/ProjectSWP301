@@ -23,9 +23,9 @@ public class product_DAO {
 
     public product getProById(int proID) throws SQLException {
         String query = "SELECT * FROM product WHERE pro_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, proID);
-            try (ResultSet resultSet = statement.executeQuery()) {
+            try ( ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     product product = new product();
                     product.setPro_id(resultSet.getInt("pro_id"));
@@ -33,11 +33,11 @@ public class product_DAO {
                     product.setPro_name(resultSet.getString("pro_name"));
                     product.setOrigin(resultSet.getString("origin"));
                     product.setBrand(resultSet.getString("brand"));
-                    product.setMass(resultSet.getInt("mass"));
+                    product.setMass(resultSet.getDouble("mass"));
                     product.setIngredient(resultSet.getString("ingredient"));
                     product.setPro_quantity(resultSet.getInt("pro_quantity"));
-                    product.setPro_price(resultSet.getInt("pro_price"));
-                    product.setDiscount(resultSet.getInt("discount"));
+                    product.setPro_price(resultSet.getDouble("pro_price"));
+                    product.setDiscount(resultSet.getDouble("discount"));
                     product.setPro_description(resultSet.getString("pro_description"));
                     product.setCreate_date(resultSet.getDate("create_date"));
                     product.setIsDelete(resultSet.getInt("isDelete"));
@@ -51,7 +51,7 @@ public class product_DAO {
     public LinkedList<product> getAllPro() throws SQLException {
         LinkedList<product> products = new LinkedList<>();
         String query = "SELECT * FROM product";
-        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {
+        try ( Statement statement = connection.createStatement();  ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
                 product product = new product();
                 product.setPro_id(resultSet.getInt("pro_id"));
@@ -59,11 +59,11 @@ public class product_DAO {
                 product.setPro_name(resultSet.getString("pro_name"));
                 product.setOrigin(resultSet.getString("origin"));
                 product.setBrand(resultSet.getString("brand"));
-                product.setMass(resultSet.getInt("mass"));
+                product.setMass(resultSet.getDouble("mass"));
                 product.setIngredient(resultSet.getString("ingredient"));
                 product.setPro_quantity(resultSet.getInt("pro_quantity"));
-                product.setPro_price(resultSet.getInt("pro_price"));
-                product.setDiscount(resultSet.getInt("discount"));
+                product.setPro_price(resultSet.getDouble("pro_price"));
+                product.setDiscount(resultSet.getDouble("discount"));
                 product.setPro_description(resultSet.getString("pro_description"));
                 product.setCreate_date(resultSet.getDate("create_date"));
                 product.setIsDelete(resultSet.getInt("isDelete"));
@@ -73,29 +73,31 @@ public class product_DAO {
         return products;
     }
 
-    public void editPro(int proID, product product) throws SQLException {
+    public int editPro(int proID, product product) throws SQLException {
         String query = "UPDATE product SET cat_id = ?, pro_name = ?, origin = ?, brand = ?, mass = ?, ingredient = ?, pro_quantity = ?, pro_price = ?, discount = ?, pro_description = ?, create_date = ?, isDelete = ? WHERE pro_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, product.getCat_id());
             statement.setString(2, product.getPro_name());
             statement.setString(3, product.getOrigin());
             statement.setString(4, product.getBrand());
-            statement.setLong(5, product.getMass());
+            statement.setDouble(5, product.getMass());
             statement.setString(6, product.getIngredient());
             statement.setInt(7, product.getPro_quantity());
-            statement.setLong(8, product.getPro_price());
-            statement.setLong(9, product.getDiscount());
+            statement.setDouble(8, product.getPro_price());
+            statement.setDouble(9, product.getDiscount());
             statement.setString(10, product.getPro_description());
             statement.setDate(11, (Date) product.getCreate_date());
             statement.setInt(12, product.getIsDelete());
             statement.setInt(13, proID);
-            statement.executeUpdate();
+//            statement.executeUpdate();
+            int deleteIs = statement.executeUpdate();
+            return deleteIs;
         }
     }
 
     public void deletePro(int proID) throws SQLException {
         String query = "DELETE FROM product WHERE pro_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, proID);
             statement.executeUpdate();
         }
@@ -103,34 +105,33 @@ public class product_DAO {
 
     public int deleteCart(int cartID) throws SQLException {
         String query = "DELETE FROM product WHERE pro_id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartID);
             int deleteIs = statement.executeUpdate();
-            if (deleteIs > 0) {
-                return 1;
-            } else {
-                return 0;
-            }
+            return deleteIs;
+
         }
     }
 
-    public void createPro(product product) throws SQLException {
+    public int createPro(product product) throws SQLException {
         String query = "INSERT INTO product (pro_id, cat_id, pro_name, origin, brand, mass, ingredient, pro_quantity, pro_price, discount, pro_description, create_date, isDelete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, product.getPro_id());
             statement.setInt(2, product.getCat_id());
             statement.setString(3, product.getPro_name());
             statement.setString(4, product.getOrigin());
             statement.setString(5, product.getBrand());
-            statement.setLong(6, product.getMass());
+            statement.setDouble(6, product.getMass());
             statement.setString(7, product.getIngredient());
             statement.setInt(8, product.getPro_quantity());
-            statement.setLong(9, product.getPro_price());
-            statement.setLong(10, product.getDiscount());
+            statement.setDouble(9, product.getPro_price());
+            statement.setDouble(10, product.getDiscount());
             statement.setString(11, product.getPro_description());
             statement.setDate(12, (Date) product.getCreate_date());
             statement.setInt(13, product.getIsDelete());
-            statement.executeUpdate();
+//            statement.executeUpdate();
+            int deleteIs = statement.executeUpdate();
+            return deleteIs;
         }
     }
 }

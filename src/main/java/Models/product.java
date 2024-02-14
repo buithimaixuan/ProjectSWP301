@@ -16,12 +16,12 @@ public class product {
     private String pro_name;
     private String origin;
     private String brand;
-    private int mass;
+    private double mass;
     private String ingredient;
     private int pro_quantity;
-    private int pro_price;
+    private double pro_price;
 
-    private int discount;
+    private double discount;
     private String pro_description;
     private Date create_date;
     private int isDelete;
@@ -29,8 +29,7 @@ public class product {
     public product() {
     }
 
-    public product(int pro_id, int cat_id, String pro_name, String origin, String brand, int mass, String ingredient,
-            int pro_quantity, int pro_price, int discount, String pro_description, Date create_date, int isDelete) {
+    public product(int pro_id, int cat_id, String pro_name, String origin, String brand, double mass, String ingredient, int pro_quantity, double pro_price, double discount, String pro_description, Date create_date, int isDelete) {
         this.pro_id = pro_id;
         this.cat_id = cat_id;
         this.pro_name = pro_name;
@@ -86,11 +85,11 @@ public class product {
         this.brand = brand;
     }
 
-    public int getMass() {
+    public double getMass() {
         return mass;
     }
 
-    public void setMass(int mass) {
+    public void setMass(double mass) {
         this.mass = mass;
     }
 
@@ -110,19 +109,19 @@ public class product {
         this.pro_quantity = pro_quantity;
     }
 
-    public int getPro_price() {
+    public double getPro_price() {
         return pro_price;
     }
 
-    public void setPro_price(int pro_price) {
+    public void setPro_price(double pro_price) {
         this.pro_price = pro_price;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 
@@ -149,5 +148,8 @@ public class product {
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
     }
+
+
+
 
 }
