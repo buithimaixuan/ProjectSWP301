@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.LinkedList;
 
 /**
@@ -26,9 +25,9 @@ public class CartDAO {
 
     public Cart getCartById(int cartID) throws SQLException {
         String query = "SELECT * FROM cart WHERE cart_id = ?";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartID);
-            try ( ResultSet resultSet = statement.executeQuery()) {
+            try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Cart cart = new Cart();
                     cart.setCart_id(resultSet.getInt("cart_id"));
@@ -46,9 +45,9 @@ public class CartDAO {
     public LinkedList<Cart> getAllCarts(int cus_id) throws SQLException {
         LinkedList<Cart> carts = new LinkedList<>();
         String query = "SELECT * FROM cart WHERE cus_id = ?";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cus_id);
-            try ( ResultSet resultSet = statement.executeQuery()) {
+            try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Cart cart = new Cart();
                     cart.setCart_id(resultSet.getInt("cart_id"));
@@ -65,7 +64,7 @@ public class CartDAO {
 
     public int editCart(int cartID, Cart cart) throws SQLException {
         String query = "UPDATE cart SET cus_id = ?, pro_id = ?, pro_quantity = ?, cart_price = ? WHERE cart_id = ?";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cart.getCus_id());
             statement.setInt(2, cart.getPro_id());
             statement.setInt(3, cart.getPro_quantity());
@@ -79,7 +78,7 @@ public class CartDAO {
 
     public int deleteCart(int cartID) throws SQLException {
         String query = "DELETE FROM cart WHERE cart_id = ?";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartID);
             int deleteIs = statement.executeUpdate();
             return deleteIs;
@@ -88,7 +87,7 @@ public class CartDAO {
 
     public int createCart(Cart cart) throws SQLException {
         String query = "INSERT INTO cart (cart_id, cus_id, pro_id, pro_quantity, cart_price) VALUES (?, ?, ?, ?, ?)";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cart.getCart_id());
             statement.setInt(2, cart.getCus_id());
             statement.setInt(3, cart.getPro_id());
