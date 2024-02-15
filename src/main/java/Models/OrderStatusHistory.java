@@ -8,18 +8,18 @@ import java.sql.Date;
 
 /**
  *
- * @author PC
+ * @author Admin
  */
-public class order_status_history {
+public class OrderStatusHistory {
     private int o_id;
     private int staff_id;
     private String status;
     private Date create_date;
 
-    public order_status_history() {
+    public OrderStatusHistory() {
     }
 
-    public order_status_history(int o_id, int staff_id, String status, Date create_date) {
+    public OrderStatusHistory(int o_id, int staff_id, String status, Date create_date) {
         this.o_id = o_id;
         this.staff_id = staff_id;
         this.status = status;
@@ -30,28 +30,28 @@ public class order_status_history {
         return o_id;
     }
 
-    public int getStaff_id() {
-        return staff_id;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public Date getCreate_date() {
-        return create_date;
-    }
-
     public void setO_id(int o_id) {
         this.o_id = o_id;
+    }
+
+    public int getStaff_id() {
+        return staff_id;
     }
 
     public void setStaff_id(int staff_id) {
         this.staff_id = staff_id;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
     }
 
     public void setCreate_date(Date create_date) {

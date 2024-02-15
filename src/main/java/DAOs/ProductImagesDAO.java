@@ -4,7 +4,7 @@
  */
 package DAOs;
 
-import Models.product_images;
+import Models.ProductImages;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ public class ProductImagesDAO {
 
     private Connection connection;
 
-    public void addProductImage(product_images productImage) throws SQLException {
+    public void addProductImage(ProductImages productImage) throws SQLException {
         String query = "INSERT INTO product_images (pro_img_id, pro_id, image_url) VALUES (?, ?, ?)";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, productImage.getPro_img_id());
@@ -29,14 +29,14 @@ public class ProductImagesDAO {
         }
     }
 
-    public LinkedList<product_images> getProductImagesByProductId(int productId) throws SQLException {
-        LinkedList<product_images> productImages = new LinkedList<>();
+    public LinkedList<ProductImages> getProductImagesByProductId(int productId) throws SQLException {
+        LinkedList<ProductImages> productImages = new LinkedList<>();
         String query = "SELECT * FROM product_images WHERE pro_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, productId);
             try ( ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    product_images productImage = new product_images();
+                    ProductImages productImage = new ProductImages();
                     productImage.setPro_img_id(resultSet.getInt("pro_img_id"));
                     productImage.setPro_id(resultSet.getInt("pro_id"));
                     productImage.setImage_url(resultSet.getString("image_url"));

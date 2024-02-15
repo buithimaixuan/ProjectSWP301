@@ -6,17 +6,17 @@ package Models;
 
 /**
  *
- * @author PC
+ * @author Admin
  */
-public class order_detail {
+public class OrderDetail {
     private int o_id;
     private int pro_id;
     private int quantity;
 
-    public order_detail() {
+    public OrderDetail() {
     }
 
-    public order_detail(int o_id, int pro_id, int quantity) {
+    public OrderDetail(int o_id, int pro_id, int quantity) {
         this.o_id = o_id;
         this.pro_id = pro_id;
         this.quantity = quantity;
@@ -26,23 +26,25 @@ public class order_detail {
         return o_id;
     }
 
-    public int getPro_id() {
-        return pro_id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void setO_id(int o_id) {
         this.o_id = o_id;
+    }
+
+    public int getPro_id() {
+        return pro_id;
     }
 
     public void setPro_id(int pro_id) {
         this.pro_id = pro_id;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    
+    
 }

@@ -4,11 +4,11 @@
  */
 package Models;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
- * @author Vu MInh Uyen
+ * @author Admin
  */
 public class Product {
     private int pro_id;
@@ -46,7 +46,6 @@ public class Product {
         this.create_date = create_date;
         this.isDelete = isDelete;
     }
-
 
     public int getPro_id() {
         return pro_id;
@@ -159,8 +158,6 @@ public class Product {
     public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
     }
-
-
-
-
+    
+    
 }

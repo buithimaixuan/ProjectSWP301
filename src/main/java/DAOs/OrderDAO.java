@@ -5,7 +5,7 @@
 package DAOs;
 
 import DB.DBConnection;
-import Models.orders;
+import Models.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,58 +16,58 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author PC
+ * @author Admin
  */
-public class ordersDAO {
+public class OrderDAO {
 
     Connection conn;
 
-    public ordersDAO() {
+    public OrderDAO() {
         try {
             conn = DBConnection.connect();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public LinkedList<orders> getAllOrders() {
-        LinkedList<orders> orderList = new LinkedList<>();
+    public LinkedList<Order> getAllOrders() {
+        LinkedList<Order> orderList = new LinkedList<>();
         String sql = "select * from [orders]";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                orders ord = new orders(rs.getInt("o_id"), rs.getInt("cus_id"),
+                Order ord = new Order(rs.getInt("o_id"), rs.getInt("cus_id"),
                         rs.getString("image_payment"), rs.getString("address"), rs.getString("status"), rs.getDate("o_date"),
                         rs.getLong("total_price"), rs.getInt("isDelete"));
                 orderList.add(ord);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return orderList;
     }
 
-    public orders getOrderByID(int o_id) {
-        orders obj = null;
+    public Order getOrderByID(int o_id) {
+        Order obj = null;
         try {
             PreparedStatement ps = conn.prepareStatement("select * from [orders] where o_id=?");
             ps.setInt(1, o_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                obj = new orders(rs.getInt("o_id"), rs.getInt("cus_id"),
+                obj = new Order(rs.getInt("o_id"), rs.getInt("cus_id"),
                         rs.getString("image_payment"), rs.getString("address"), rs.getString("status"), rs.getDate("o_date"),
                         rs.getLong("total_price"), rs.getInt("isDelete"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return obj;
     }
 
-    public int addOrder(orders obj) {
+    public int addOrder(Order obj) {
         int count = 0;
         try {
             PreparedStatement ps = conn.prepareStatement("Insert into [orders] values(?, ?, ?, ?, ?, ?, ?, ?)");
@@ -81,12 +81,12 @@ public class ordersDAO {
             ps.setInt(8, obj.getIsDelete());
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
 
-    public int editOrder(int o_id, orders obj) {
+    public int editOrder(int o_id, Order obj) {
         int count = 0;
         try {
             PreparedStatement ps = conn.prepareStatement("update [orders] set image_payment=?, address=?, status=?, o_date=?. total_price=?, isDelete=? where o_id=?");
@@ -99,7 +99,7 @@ public class ordersDAO {
             ps.setInt(7, o_id);
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }
@@ -111,7 +111,7 @@ public class ordersDAO {
             ps.setInt(1, o_id);
             count = ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ordersDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return count;
     }

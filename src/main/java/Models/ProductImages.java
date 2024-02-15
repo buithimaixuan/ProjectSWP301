@@ -6,18 +6,17 @@ package Models;
 
 /**
  *
- * @author Vu MInh Uyen
+ * @author Admin
  */
-public class product_images {
-    
+public class ProductImages {
     private int pro_img_id;
     private int pro_id;
     private String image_url;
 
-    public product_images() {
+    public ProductImages() {
     }
 
-    public product_images(int pro_img_id, int pro_id, String image_url) {
+    public ProductImages(int pro_img_id, int pro_id, String image_url) {
         this.pro_img_id = pro_img_id;
         this.pro_id = pro_id;
         this.image_url = image_url;
